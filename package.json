@@ -1,0 +1,31 @@
+{
+  "name": "sanity-photon",
+  "description": "Next.js + Sanity + Shopify starter",
+  "scripts": {
+    "predev": "concurrently \"npm run predev --workspace=storefront\" \"npm run predev --workspace=studio\"",
+    "dev": "concurrently \"npm run dev --workspace=storefront\" \"npm run dev --workspace=studio\"",
+    "dev:storefront": "npm run dev --workspace=storefront",
+    "dev:studio": "npm run dev --workspace=studio"
+  },
+  "keywords": [
+    "Sanity",
+    "Shopify",
+    "Next.js",
+    "Headless CMS",
+    "Ecommerce",
+    "Visual Editing",
+    "Live Content API (LCAPI)",
+    "Real-time"
+  ],
+  "bugs": {
+    "url": "https://github.com/sanity-io/sanity-template-nextjs-clean/issues"
+  },
+  "homepage": "https://github.com/sanity-io/sanity-template-nextjs-clean#readme",
+  "workspaces": [
+    "studio",
+    "storefront"
+  ],
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

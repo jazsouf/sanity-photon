@@ -1,0 +1,30 @@
+.header {
+  position: fixed;
+  z-index: 10;
+  width: 100%;
+}
+
+.annoucementBar {
+  background: black;
+  color: white;
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer {
+  background: black;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer ul {
+  display: flex;
+  gap: var(--main-gap);
+}

@@ -1,0 +1,47 @@
+{
+  "name": "starter-template",
+  "private": true,
+  "version": "1.0.0",
+  "main": "package.json",
+  "scripts": {
+    "predev": "npm run extract-types",
+    "dev": "sanity dev && npm run extract-types:watch",
+    "start": "sanity start",
+    "prebuild": "npm run extract-types",
+    "build": "sanity build",
+    "deploy": "sanity deploy",
+    "extract-types": "sanity schema extract --enforce-required-fields",
+    "extract-types:watch": "watch \"npm run extract-types\"",
+    "format": "prettier --write --ignore-unknown .",
+    "format:check": "prettier --check --ignore-unknown .",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "sanity"
+  ],
+  "dependencies": {
+    "@sanity/color-input": "4.0.3",
+    "@sanity/icons": "^3.7.0",
+    "@sanity/ui": "^2.15.2",
+    "@sanity/vision": "^3.78.0",
+    "babel-plugin-react-compiler": "beta",
+    "date-fns": "^3.6.0",
+    "lodash.get": "^4.4.2",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "rxjs": "^7.8.2",
+    "sanity": "^3.78.0",
+    "slug": "^10.0.0",
+    "styled-components": "^6.1.15"
+  },
+  "devDependencies": {
+    "@types/lodash.get": "^4.4.9",
+    "@types/slug": "^5.0.9",
+    "prettier": "^3.5.2",
+    "typescript": "^5.8.2"
+  },
+  "overrides": {
+    "react": "$react",
+    "react-dom": "$react-dom"
+  }
+}

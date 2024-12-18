@@ -1,0 +1,66 @@
+.relative {
+  position: relative;
+}
+
+.block-space {
+  padding-block: var(--main-padding);
+}
+
+.absolute {
+  position: absolute;
+}
+
+.display-hidden {
+  display: none !important;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.cover {
+  object-fit: cover;
+  height: 100%;
+}
+
+.contain {
+  object-fit: contain;
+  height: fit-content;
+}
+
+.full-height {
+  height: 100%;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.flex {
+  display: flex;
+  gap: var(--main-gap);
+}
+
+.sm-only {
+  @media (min-width: 768px) {
+    display: none !important;
+  }
+}
+
+.lg-only {
+  @media (max-width: 768px) {
+    display: none !important;
+  }
+}
+
+.sr-only {
+  display: inline-block;
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1;
+  width: 1;
+  margin: -1;
+  padding: 0;
+  border: 0;
+}
