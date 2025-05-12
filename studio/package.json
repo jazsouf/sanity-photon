@@ -5,13 +5,12 @@
   "main": "package.json",
   "scripts": {
     "predev": "npm run extract-types",
-    "dev": "sanity dev && npm run extract-types:watch",
+    "dev": "sanity dev",
     "start": "sanity start",
     "prebuild": "npm run extract-types",
     "build": "sanity build",
     "deploy": "sanity deploy",
     "extract-types": "sanity schema extract --enforce-required-fields",
-    "extract-types:watch": "watch \"npm run extract-types\"",
     "format": "prettier --write --ignore-unknown .",
     "format:check": "prettier --check --ignore-unknown .",
     "typecheck": "tsc --noEmit"
@@ -22,23 +21,23 @@
   "dependencies": {
     "@sanity/color-input": "4.0.3",
     "@sanity/icons": "^3.7.0",
-    "@sanity/ui": "^2.15.2",
-    "@sanity/vision": "^3.78.0",
+    "@sanity/ui": "^2.15.17",
+    "@sanity/vision": "^3.88.2",
     "babel-plugin-react-compiler": "beta",
-    "date-fns": "^3.6.0",
+    "date-fns": "^4.1.0",
     "lodash.get": "^4.4.2",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
     "rxjs": "^7.8.2",
-    "sanity": "^3.78.0",
+    "sanity": "^3.88.0",
     "slug": "^10.0.0",
-    "styled-components": "^6.1.15"
+    "styled-components": "^6.1.18"
   },
   "devDependencies": {
     "@types/lodash.get": "^4.4.9",
     "@types/slug": "^5.0.9",
-    "prettier": "^3.5.2",
-    "typescript": "^5.8.2"
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.3"
   },
   "overrides": {
     "react": "$react",

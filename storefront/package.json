@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "predev": "npm run typegen",
-    "dev": "next dev --turbopack && npm run typegen:watch",
+    "dev": "next dev --turbopack",
     "prebuild": "npm run typegen",
     "build": "next build",
     "start": "next start",
@@ -11,28 +11,27 @@
     "format": "prettier --write --ignore-unknown .",
     "format:check": "prettier --check --ignore-unknown .",
     "typegen": "sanity typegen generate",
-    "typegen:watch": "watch \"npm run typegen\" ./sanity ./data/sanity",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@sanity/client": "^6.28.3",
+    "@sanity/client": "^7.2.1",
     "@sanity/image-url": "^1.1.0",
     "babel-plugin-react-compiler": "beta",
-    "next": "^15.2.1",
-    "next-sanity": "^9.9.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "sanity": "^3.78.0",
-    "sonner": "^2.0.1"
+    "next": "^15.3.2",
+    "next-sanity": "^9.11.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "sanity": "^3.88.2",
+    "sonner": "^2.0.3"
   },
   "devDependencies": {
     "@types/node": "^20.14.13",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
-    "autoprefixer": "^10.4.20",
+    "autoprefixer": "^10.4.21",
     "postcss": "^8.5.3",
     "prettier": "^3.5.3",
-    "typescript": "5.8.2"
+    "typescript": "5.8.3"
   },
   "overrides": {
     "react": "$react",
