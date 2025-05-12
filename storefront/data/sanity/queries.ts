@@ -65,6 +65,7 @@ export const SETTINGS_QUERY = defineQuery(`
     _createdAt,
     "title": coalesce(title, "Untitled Store"),
     metadataBase,
+    defaultProductInformation,
     header{
       _type,
       announcementBar{
@@ -161,9 +162,13 @@ export const PRODUCT_QUERY = defineQuery(`
     _id,
     _updatedAt,
     _createdAt,
+    overwriteDefaultInformationFields,
+    "defaultProductInformation": *[ _type == 'settings'][0].defaultProductInformation,
+    productInformation,
     "status": select(_id in path("drafts.**") => "draft", "published"),
     "name": coalesce(name, "Untitled Page"),
     "slug": store.slug.current,
+
     pageBuilder[]{
       ${pageBuilderFields}
     },

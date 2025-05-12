@@ -20,6 +20,8 @@ import { AddToCart } from "../../_cart/add-to-cart";
 import s from "./page.module.css";
 import { ProductProvider } from "./product-context";
 import { VariantSelector } from "./variant-selector";
+import { CustomPortableText } from "../../../components/custom-portable-text";
+import { PortableTextBlock } from "next-sanity";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -116,7 +118,50 @@ export default async function Page(props: Props) {
                 loading="eager"
               />
             </div>
-            <ProductDescription product={product} />
+            <div className={s.productDetails}>
+              <ProductDescription product={product} />
+              <div>
+                {productPage?.overwriteDefaultInformationFields ===
+                  "complementDefaults" && (
+                  <>
+                    {productPage?.defaultProductInformation?.map(
+                      (information) => {
+                        return (
+                          <details key={information._key}>
+                            <summary>{information.title}</summary>
+                            <CustomPortableText
+                              value={information.content as PortableTextBlock[]}
+                            />
+                          </details>
+                        );
+                      },
+                    )}
+                    {productPage?.productInformation?.map((information) => {
+                      return (
+                        <details key={information._key}>
+                          <summary>{information.title}</summary>
+                          <CustomPortableText
+                            value={information.content as PortableTextBlock[]}
+                          />
+                        </details>
+                      );
+                    })}
+                  </>
+                )}
+                {productPage?.overwriteDefaultInformationFields ===
+                  "noDefaults" &&
+                  productPage?.productInformation?.map((information) => {
+                    return (
+                      <details key={information._key}>
+                        <summary>{information.title}</summary>
+                        <CustomPortableText
+                          value={information.content as PortableTextBlock[]}
+                        />
+                      </details>
+                    );
+                  })}
+              </div>
+            </div>
           </div>
           {!!productPage?.pageBuilder?.length && (
             <PageBuilder page={productPage} />
@@ -134,7 +179,7 @@ export default async function Page(props: Props) {
 
 function ProductDescription({ product }: { product: Product }) {
   return (
-    <div>
+    <>
       <div>
         <h1>{product.title}</h1>
         {!!product.descriptionHtml && (
@@ -153,7 +198,7 @@ function ProductDescription({ product }: { product: Product }) {
         )}
       </div>
       <AddToCart product={product} />
-    </div>
+    </>
   );
 }
 

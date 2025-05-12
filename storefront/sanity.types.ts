@@ -198,6 +198,7 @@ export type Picture = {
     _weak?: boolean;
     [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
   };
+  media?: unknown;
   hotspot?: SanityImageHotspot;
   crop?: SanityImageCrop;
   alt?: string;
@@ -210,6 +211,7 @@ export type EditorialBlock = {
   } & Picture | {
     _key: string;
   } & Color>;
+  textColor?: Color;
   content?: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -242,7 +244,6 @@ export type EditorialBlock = {
     _type: "block";
     _key: string;
   }>;
-  textColor?: Color;
 };
 
 export type BlockContent = Array<{
@@ -320,9 +321,7 @@ export type Collection = {
   slugProxy?: ProxyString;
   pageBuilder?: Array<{
     _key: string;
-  } & EditorialBlock | {
-    _key: string;
-  } & Newsletter>;
+  } & EditorialBlock>;
   store?: ShopifyCollection;
 };
 
@@ -352,9 +351,7 @@ export type Home = {
   _rev: string;
   pageBuilder?: Array<{
     _key: string;
-  } & EditorialBlock | {
-    _key: string;
-  } & Newsletter>;
+  } & EditorialBlock>;
   pageSeo?: PageSeo;
 };
 
@@ -383,9 +380,7 @@ export type Page = {
   slug: Slug;
   pageBuilder?: Array<{
     _key: string;
-  } & EditorialBlock | {
-    _key: string;
-  } & Newsletter>;
+  } & EditorialBlock>;
   pageSeo?: PageSeo;
 };
 
@@ -457,6 +452,7 @@ export type PageSeo = {
       _weak?: boolean;
       [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
     };
+    media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     alt?: string;
@@ -478,9 +474,7 @@ export type Product = {
   } & ProductInformation>;
   pageBuilder?: Array<{
     _key: string;
-  } & EditorialBlock | {
-    _key: string;
-  } & Newsletter>;
+  } & EditorialBlock>;
   store?: ShopifyProduct;
 };
 
@@ -571,7 +565,7 @@ export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./data/sanity/queries.ts
 // Variable: SETTINGS_QUERY
-// Query: *[_type == "settings"][0]{    _type,    _id,    _updatedAt,    _createdAt,    "title": coalesce(title, "Untitled Store"),    metadataBase,    header{      _type,      announcementBar{        _type,        content,        "link": links[0]{  _type,  _key,  linkType,  "url": select(    linkType == 'href' => href,    linkType == 'home' => '/',    linkType == 'plp' => '/products',    linkType == 'page' => '/' + page->slug.current,    linkType == 'product' => '/products/' + product->store.slug.current,    linkType == 'collection' => '/collections/' + collection->store.slug.current,  ),  "label": select(      label.length > 0 => label,      linkType == 'home' => 'Home',      linkType == 'plp' => 'All Products',      linkType == 'page' => page->name,      linkType == 'product' => product->store.title,      linkType == 'collection' => collection->store.title,      "Link"    ),  openInNewTab}      },      "links": links[]{  _type,  _key,  linkType,  "url": select(    linkType == 'href' => href,    linkType == 'home' => '/',    linkType == 'plp' => '/products',    linkType == 'page' => '/' + page->slug.current,    linkType == 'product' => '/products/' + product->store.slug.current,    linkType == 'collection' => '/collections/' + collection->store.slug.current,  ),  "label": select(      label.length > 0 => label,      linkType == 'home' => 'Home',      linkType == 'plp' => 'All Products',      linkType == 'page' => page->name,      linkType == 'product' => product->store.title,      linkType == 'collection' => collection->store.title,      "Link"    ),  openInNewTab}    },    footer{      _type,      "links": links[]{  _type,  _key,  linkType,  "url": select(    linkType == 'href' => href,    linkType == 'home' => '/',    linkType == 'plp' => '/products',    linkType == 'page' => '/' + page->slug.current,    linkType == 'product' => '/products/' + product->store.slug.current,    linkType == 'collection' => '/collections/' + collection->store.slug.current,  ),  "label": select(      label.length > 0 => label,      linkType == 'home' => 'Home',      linkType == 'plp' => 'All Products',      linkType == 'page' => page->name,      linkType == 'product' => product->store.title,      linkType == 'collection' => collection->store.title,      "Link"    ),  openInNewTab}    },  }
+// Query: *[_type == "settings"][0]{    _type,    _id,    _updatedAt,    _createdAt,    "title": coalesce(title, "Untitled Store"),    metadataBase,    defaultProductInformation,    header{      _type,      announcementBar{        _type,        content,        "link": links[0]{  _type,  _key,  linkType,  "url": select(    linkType == 'href' => href,    linkType == 'home' => '/',    linkType == 'plp' => '/products',    linkType == 'page' => '/' + page->slug.current,    linkType == 'product' => '/products/' + product->store.slug.current,    linkType == 'collection' => '/collections/' + collection->store.slug.current,  ),  "label": select(      label.length > 0 => label,      linkType == 'home' => 'Home',      linkType == 'plp' => 'All Products',      linkType == 'page' => page->name,      linkType == 'product' => product->store.title,      linkType == 'collection' => collection->store.title,      "Link"    ),  openInNewTab}      },      "links": links[]{  _type,  _key,  linkType,  "url": select(    linkType == 'href' => href,    linkType == 'home' => '/',    linkType == 'plp' => '/products',    linkType == 'page' => '/' + page->slug.current,    linkType == 'product' => '/products/' + product->store.slug.current,    linkType == 'collection' => '/collections/' + collection->store.slug.current,  ),  "label": select(      label.length > 0 => label,      linkType == 'home' => 'Home',      linkType == 'plp' => 'All Products',      linkType == 'page' => page->name,      linkType == 'product' => product->store.title,      linkType == 'collection' => collection->store.title,      "Link"    ),  openInNewTab}    },    footer{      _type,      "links": links[]{  _type,  _key,  linkType,  "url": select(    linkType == 'href' => href,    linkType == 'home' => '/',    linkType == 'plp' => '/products',    linkType == 'page' => '/' + page->slug.current,    linkType == 'product' => '/products/' + product->store.slug.current,    linkType == 'collection' => '/collections/' + collection->store.slug.current,  ),  "label": select(      label.length > 0 => label,      linkType == 'home' => 'Home',      linkType == 'plp' => 'All Products',      linkType == 'page' => page->name,      linkType == 'product' => product->store.title,      linkType == 'collection' => collection->store.title,      "Link"    ),  openInNewTab}    },  }
 export type SETTINGS_QUERYResult = {
   _type: "settings";
   _id: string;
@@ -579,6 +573,9 @@ export type SETTINGS_QUERYResult = {
   _createdAt: string;
   title: string;
   metadataBase: string;
+  defaultProductInformation: Array<{
+    _key: string;
+  } & ProductInformation> | null;
   header: {
     _type: "header";
     announcementBar: {
@@ -679,12 +676,6 @@ export type HOME_QUERYResult = {
       _key: string;
     }> | null;
     textColor: string | "black";
-  } | {
-    _key: string;
-    _type: "newsletter";
-    cover: null;
-    content: null;
-    textColor: "black";
   }> | null;
   pageSeo: {
     _type: "pageSeo";
@@ -697,6 +688,7 @@ export type HOME_QUERYResult = {
         _weak?: boolean;
         [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
       };
+      media?: unknown;
       hotspot?: SanityImageHotspot;
       crop?: SanityImageCrop;
       alt?: string;
@@ -769,12 +761,6 @@ export type PAGE_QUERYResult = {
       _key: string;
     }> | null;
     textColor: string | "black";
-  } | {
-    _key: string;
-    _type: "newsletter";
-    cover: null;
-    content: null;
-    textColor: "black";
   }> | null;
   pageSeo: {
     _type: "pageSeo";
@@ -787,6 +773,7 @@ export type PAGE_QUERYResult = {
         _weak?: boolean;
         [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
       };
+      media?: unknown;
       hotspot?: SanityImageHotspot;
       crop?: SanityImageCrop;
       alt?: string;
@@ -867,12 +854,6 @@ export type COLLECTION_QUERYResult = {
         _key: string;
       }> | null;
       textColor: string | "black";
-    } | {
-      _key: string;
-      _type: "newsletter";
-      cover: null;
-      content: null;
-      textColor: "black";
     }> | null;
   };
   pageSeo: null;
@@ -890,9 +871,7 @@ export type ALL_COLLECTIONS_QUERYResult = Array<{
   slugProxy?: ProxyString;
   pageBuilder?: Array<{
     _key: string;
-  } & EditorialBlock | {
-    _key: string;
-  } & Newsletter>;
+  } & EditorialBlock>;
   store?: ShopifyCollection;
 }>;
 // Variable: ALL_PRODUCTS_QUERY
@@ -911,9 +890,7 @@ export type ALL_PRODUCTS_QUERYResult = Array<{
   } & ProductInformation>;
   pageBuilder?: Array<{
     _key: string;
-  } & EditorialBlock | {
-    _key: string;
-  } & Newsletter>;
+  } & EditorialBlock>;
   store?: ShopifyProduct;
 }>;
 // Variable: MORE_PRODUCTS_QUERY
@@ -932,18 +909,23 @@ export type MORE_PRODUCTS_QUERYResult = Array<{
   } & ProductInformation>;
   pageBuilder?: Array<{
     _key: string;
-  } & EditorialBlock | {
-    _key: string;
-  } & Newsletter>;
+  } & EditorialBlock>;
   store?: ShopifyProduct;
 }>;
 // Variable: PRODUCT_QUERY
-// Query: *[_type == "product" && store.slug.current == $slug] [0] {    _type,    _id,    _updatedAt,    _createdAt,    "status": select(_id in path("drafts.**") => "draft", "published"),    "name": coalesce(name, "Untitled Page"),    "slug": store.slug.current,    pageBuilder[]{        _key,  _type,  "cover": cover[] {    _type,    "picture": select(_type == "picture" => {      asset,      crop,      hotspot,      alt,    }),    "color": select(_type == "color" => hex)  },  content,  "textColor": coalesce(textColor.hex, 'black'),    },    pageSeo{  _type,  "title": coalesce(title, ^.name),  description,  ogImage}  }
+// Query: *[_type == "product" && store.slug.current == $slug] [0] {    _type,    _id,    _updatedAt,    _createdAt,    overwriteDefaultInformationFields,    "defaultProductInformation": *[ _type == 'settings'][0].defaultProductInformation,    productInformation,    "status": select(_id in path("drafts.**") => "draft", "published"),    "name": coalesce(name, "Untitled Page"),    "slug": store.slug.current,    pageBuilder[]{        _key,  _type,  "cover": cover[] {    _type,    "picture": select(_type == "picture" => {      asset,      crop,      hotspot,      alt,    }),    "color": select(_type == "color" => hex)  },  content,  "textColor": coalesce(textColor.hex, 'black'),    },    pageSeo{  _type,  "title": coalesce(title, ^.name),  description,  ogImage}  }
 export type PRODUCT_QUERYResult = {
   _type: "product";
   _id: string;
   _updatedAt: string;
   _createdAt: string;
+  overwriteDefaultInformationFields: "complementDefaults" | "noDefaults" | null;
+  defaultProductInformation: Array<{
+    _key: string;
+  } & ProductInformation> | null;
+  productInformation: Array<{
+    _key: string;
+  } & ProductInformation> | null;
   status: "draft" | "published";
   name: "Untitled Page";
   slug: string | null;
@@ -1002,12 +984,6 @@ export type PRODUCT_QUERYResult = {
       _key: string;
     }> | null;
     textColor: string | "black";
-  } | {
-    _key: string;
-    _type: "newsletter";
-    cover: null;
-    content: null;
-    textColor: "black";
   }> | null;
   pageSeo: null;
 } | null;
@@ -1033,14 +1009,14 @@ export type ALL_PAGES_SLUGSResult = Array<{
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "\n  *[_type == \"settings\"][0]{\n    _type,\n    _id,\n    _updatedAt,\n    _createdAt,\n    \"title\": coalesce(title, \"Untitled Store\"),\n    metadataBase,\n    header{\n      _type,\n      announcementBar{\n        _type,\n        content,\n        \"link\": links[0]{\n  _type,\n  _key,\n  linkType,\n  \"url\": select(\n    linkType == 'href' => href,\n    linkType == 'home' => '/',\n    linkType == 'plp' => '/products',\n    linkType == 'page' => '/' + page->slug.current,\n    linkType == 'product' => '/products/' + product->store.slug.current,\n    linkType == 'collection' => '/collections/' + collection->store.slug.current,\n  ),\n  \"label\": select(\n      label.length > 0 => label,\n      linkType == 'home' => 'Home',\n      linkType == 'plp' => 'All Products',\n      linkType == 'page' => page->name,\n      linkType == 'product' => product->store.title,\n      linkType == 'collection' => collection->store.title,\n      \"Link\"\n    ),\n  openInNewTab\n}\n      },\n      \"links\": links[]{\n  _type,\n  _key,\n  linkType,\n  \"url\": select(\n    linkType == 'href' => href,\n    linkType == 'home' => '/',\n    linkType == 'plp' => '/products',\n    linkType == 'page' => '/' + page->slug.current,\n    linkType == 'product' => '/products/' + product->store.slug.current,\n    linkType == 'collection' => '/collections/' + collection->store.slug.current,\n  ),\n  \"label\": select(\n      label.length > 0 => label,\n      linkType == 'home' => 'Home',\n      linkType == 'plp' => 'All Products',\n      linkType == 'page' => page->name,\n      linkType == 'product' => product->store.title,\n      linkType == 'collection' => collection->store.title,\n      \"Link\"\n    ),\n  openInNewTab\n}\n    },\n    footer{\n      _type,\n      \"links\": links[]{\n  _type,\n  _key,\n  linkType,\n  \"url\": select(\n    linkType == 'href' => href,\n    linkType == 'home' => '/',\n    linkType == 'plp' => '/products',\n    linkType == 'page' => '/' + page->slug.current,\n    linkType == 'product' => '/products/' + product->store.slug.current,\n    linkType == 'collection' => '/collections/' + collection->store.slug.current,\n  ),\n  \"label\": select(\n      label.length > 0 => label,\n      linkType == 'home' => 'Home',\n      linkType == 'plp' => 'All Products',\n      linkType == 'page' => page->name,\n      linkType == 'product' => product->store.title,\n      linkType == 'collection' => collection->store.title,\n      \"Link\"\n    ),\n  openInNewTab\n}\n    },\n  }": SETTINGS_QUERYResult;
+    "\n  *[_type == \"settings\"][0]{\n    _type,\n    _id,\n    _updatedAt,\n    _createdAt,\n    \"title\": coalesce(title, \"Untitled Store\"),\n    metadataBase,\n    defaultProductInformation,\n    header{\n      _type,\n      announcementBar{\n        _type,\n        content,\n        \"link\": links[0]{\n  _type,\n  _key,\n  linkType,\n  \"url\": select(\n    linkType == 'href' => href,\n    linkType == 'home' => '/',\n    linkType == 'plp' => '/products',\n    linkType == 'page' => '/' + page->slug.current,\n    linkType == 'product' => '/products/' + product->store.slug.current,\n    linkType == 'collection' => '/collections/' + collection->store.slug.current,\n  ),\n  \"label\": select(\n      label.length > 0 => label,\n      linkType == 'home' => 'Home',\n      linkType == 'plp' => 'All Products',\n      linkType == 'page' => page->name,\n      linkType == 'product' => product->store.title,\n      linkType == 'collection' => collection->store.title,\n      \"Link\"\n    ),\n  openInNewTab\n}\n      },\n      \"links\": links[]{\n  _type,\n  _key,\n  linkType,\n  \"url\": select(\n    linkType == 'href' => href,\n    linkType == 'home' => '/',\n    linkType == 'plp' => '/products',\n    linkType == 'page' => '/' + page->slug.current,\n    linkType == 'product' => '/products/' + product->store.slug.current,\n    linkType == 'collection' => '/collections/' + collection->store.slug.current,\n  ),\n  \"label\": select(\n      label.length > 0 => label,\n      linkType == 'home' => 'Home',\n      linkType == 'plp' => 'All Products',\n      linkType == 'page' => page->name,\n      linkType == 'product' => product->store.title,\n      linkType == 'collection' => collection->store.title,\n      \"Link\"\n    ),\n  openInNewTab\n}\n    },\n    footer{\n      _type,\n      \"links\": links[]{\n  _type,\n  _key,\n  linkType,\n  \"url\": select(\n    linkType == 'href' => href,\n    linkType == 'home' => '/',\n    linkType == 'plp' => '/products',\n    linkType == 'page' => '/' + page->slug.current,\n    linkType == 'product' => '/products/' + product->store.slug.current,\n    linkType == 'collection' => '/collections/' + collection->store.slug.current,\n  ),\n  \"label\": select(\n      label.length > 0 => label,\n      linkType == 'home' => 'Home',\n      linkType == 'plp' => 'All Products',\n      linkType == 'page' => page->name,\n      linkType == 'product' => product->store.title,\n      linkType == 'collection' => collection->store.title,\n      \"Link\"\n    ),\n  openInNewTab\n}\n    },\n  }": SETTINGS_QUERYResult;
     "\n  *[_type == 'home' ][0]{\n    _type,\n    _id,\n    _updatedAt,\n    _createdAt,\n    \"status\": select(_id in path(\"drafts.**\") => \"draft\", \"published\"),\n    \"name\": \"Home\",\n    \"slug\": \"/\",\n    \"pageBuilder\": pageBuilder[]{\n      \n  _key,\n  _type,\n  \"cover\": cover[] {\n    _type,\n    \"picture\": select(_type == \"picture\" => {\n      asset,\n      crop,\n      hotspot,\n      alt,\n    }),\n    \"color\": select(_type == \"color\" => hex)\n  },\n  content,\n  \"textColor\": coalesce(textColor.hex, 'black'),\n\n    },\n    pageSeo{\n  _type,\n  \"title\": coalesce(title, ^.name),\n  description,\n  ogImage\n}\n  }\n": HOME_QUERYResult;
     "\n  *[_type == 'page' && slug.current == $slug][0]{\n    _type,\n    _id,\n    _updatedAt,\n    _createdAt,\n    \"status\": select(_id in path(\"drafts.**\") => \"draft\", \"published\"),\n    \"name\": coalesce(name, \"Untitled Page\"),\n    \"slug\": slug.current,\n    \"pageBuilder\": pageBuilder[]{\n      \n  _key,\n  _type,\n  \"cover\": cover[] {\n    _type,\n    \"picture\": select(_type == \"picture\" => {\n      asset,\n      crop,\n      hotspot,\n      alt,\n    }),\n    \"color\": select(_type == \"color\" => hex)\n  },\n  content,\n  \"textColor\": coalesce(textColor.hex, 'black'),\n\n    },\n    pageSeo{\n  _type,\n  \"title\": coalesce(title, ^.name),\n  description,\n  ogImage\n}\n  }\n": PAGE_QUERYResult;
     "\n  *[_type == 'collection' && slug.current == $slug][0]{\n    _type,\n    _id,\n    _updatedAt,\n    _createdAt,\n    \"status\": select(_id in path(\"drafts.**\") => \"draft\", \"published\"),\n    \"name\": coalesce(name, \"Untitled Collection\"),\n    \"slug\": slug.current,\n    \"editorial\": {\n      \"_type\":'page',\n      _id,\n      _updatedAt,\n      _createdAt,\n      \"status\": select(_id in path(\"drafts.**\") => \"draft\", \"published\"),\n      \"name\": coalesce(name, \"Untitled Page\"),\n      \"slug\": store.slug.current,\n      pageBuilder[]{\n        \n  _key,\n  _type,\n  \"cover\": cover[] {\n    _type,\n    \"picture\": select(_type == \"picture\" => {\n      asset,\n      crop,\n      hotspot,\n      alt,\n    }),\n    \"color\": select(_type == \"color\" => hex)\n  },\n  content,\n  \"textColor\": coalesce(textColor.hex, 'black'),\n\n      },\n    },\n    pageSeo{\n  _type,\n  \"title\": coalesce(title, ^.name),\n  description,\n  ogImage\n}\n  }\n": COLLECTION_QUERYResult;
     "\n  *[_type == \"collection\" && defined(store.slug.current)] | order(date desc, _updatedAt desc) {\n    ...,\n  }\n": ALL_COLLECTIONS_QUERYResult;
     "\n  *[_type == \"product\" && defined(store.slug.current)] | order(date desc, _updatedAt desc) {\n    ...,\n  }\n": ALL_PRODUCTS_QUERYResult;
     "\n  *[_type == \"product\" && _id != $skip && defined(store.slug.current)] | order(date desc, _updatedAt desc) [0...$limit] {\n    ...,\n  }\n": MORE_PRODUCTS_QUERYResult;
-    "\n  *[_type == \"product\" && store.slug.current == $slug] [0] {\n    _type,\n    _id,\n    _updatedAt,\n    _createdAt,\n    \"status\": select(_id in path(\"drafts.**\") => \"draft\", \"published\"),\n    \"name\": coalesce(name, \"Untitled Page\"),\n    \"slug\": store.slug.current,\n    pageBuilder[]{\n      \n  _key,\n  _type,\n  \"cover\": cover[] {\n    _type,\n    \"picture\": select(_type == \"picture\" => {\n      asset,\n      crop,\n      hotspot,\n      alt,\n    }),\n    \"color\": select(_type == \"color\" => hex)\n  },\n  content,\n  \"textColor\": coalesce(textColor.hex, 'black'),\n\n    },\n    pageSeo{\n  _type,\n  \"title\": coalesce(title, ^.name),\n  description,\n  ogImage\n}\n  }\n": PRODUCT_QUERYResult;
+    "\n  *[_type == \"product\" && store.slug.current == $slug] [0] {\n    _type,\n    _id,\n    _updatedAt,\n    _createdAt,\n    overwriteDefaultInformationFields,\n    \"defaultProductInformation\": *[ _type == 'settings'][0].defaultProductInformation,\n    productInformation,\n    \"status\": select(_id in path(\"drafts.**\") => \"draft\", \"published\"),\n    \"name\": coalesce(name, \"Untitled Page\"),\n    \"slug\": store.slug.current,\n\n    pageBuilder[]{\n      \n  _key,\n  _type,\n  \"cover\": cover[] {\n    _type,\n    \"picture\": select(_type == \"picture\" => {\n      asset,\n      crop,\n      hotspot,\n      alt,\n    }),\n    \"color\": select(_type == \"color\" => hex)\n  },\n  content,\n  \"textColor\": coalesce(textColor.hex, 'black'),\n\n    },\n    pageSeo{\n  _type,\n  \"title\": coalesce(title, ^.name),\n  description,\n  ogImage\n}\n  }\n": PRODUCT_QUERYResult;
     "\n  *[_type == \"product\" && store.slug.current == $slug] [0] {\n    _type,\n    _id,\n    store\n  }\n": PRODUCT_METADATA_QUERYResult;
     "\n  *[_type == \"product\" && defined(store.slug.current)]\n  {\"slug\": store.slug.current}\n": ALL_PRODUCT_PAGES_SLUGSResult;
     "\n  *[_type == \"page\" && defined(slug.current)]\n  {\"slug\": slug.current}\n": ALL_PAGES_SLUGSResult;

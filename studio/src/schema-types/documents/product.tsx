@@ -40,7 +40,7 @@ export const product = defineType({
       type: "string",
       group: "editorial",
       description:
-        "Which information should be displayed?\n If set to 'No defaults', only the fields set bellow will show on the store.\n If set to 'Complement Defaults', the default information fields will also show.",
+        "Which information should be displayed?\n If set to 'No Defaults', only the fields set bellow will show up on the store.\n If set to 'Complement Defaults', the default information fields will also show.",
       options: {
         list: [
           { title: "No defaults", value: "noDefaults" },
@@ -60,7 +60,7 @@ export const product = defineType({
       group: "editorial",
       type: "array",
       // Add custom block to the list
-      of: [{ type: "editorialBlock" }, { type: "newsletter" }],
+      of: [{ type: "editorialBlock" }],
       options: {
         insertMenu: {
           // Configure the "Add Item" menu to display a thumbnail preview of the content type. https://www.sanity.io/docs/array-type#efb1fe03459d

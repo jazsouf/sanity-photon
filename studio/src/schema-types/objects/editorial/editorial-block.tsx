@@ -18,11 +18,6 @@ export const editorialBlock = defineType({
       validation: (Rule) => Rule.max(1).required(),
     }),
     defineField({
-      name: "content",
-      type: "blockContent",
-      description: "Add content to your block. Optional.",
-    }),
-    defineField({
       name: "textColor",
       type: "color",
       description: "Set the color of the text in your block. Default is black.",
@@ -30,6 +25,11 @@ export const editorialBlock = defineType({
         const hasContent = parent?.content;
         return !hasContent;
       },
+    }),
+    defineField({
+      name: "content",
+      type: "blockContent",
+      description: "Add content to your block. Optional.",
     }),
   ],
   preview: {

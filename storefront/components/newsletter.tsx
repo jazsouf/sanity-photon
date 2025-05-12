@@ -2,6 +2,7 @@
 
 import { useActionState } from "react";
 import { newsletterAction } from "../app/actions";
+import { PAGE_QUERYResult } from "../sanity.types";
 
 export default function Newsletter() {
   const [state, dispatch, isPending] = useActionState(newsletterAction, "idle");

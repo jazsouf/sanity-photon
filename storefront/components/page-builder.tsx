@@ -16,7 +16,7 @@ import { BlockRenderer } from "./block-renderer";
 type Page =
   | NonNullable<PAGE_QUERYResult>
   | NonNullable<HOME_QUERYResult>
-  | NonNullable<PRODUCT_QUERYResult>["editorial"];
+  | NonNullable<PRODUCT_QUERYResult>;
 
 type PageBuilderSection = {
   _key: string;

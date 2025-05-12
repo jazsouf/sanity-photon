@@ -53,7 +53,7 @@ export const collection = defineType({
       name: "pageBuilder",
       title: "Page Builder",
       type: "array",
-      of: [{ type: "editorialBlock" }, { type: "newsletter" }],
+      of: [{ type: "editorialBlock" }],
       options: {
         insertMenu: {
           // Configure the "Add Item" menu to display a thumbnail preview of the content type. https://www.sanity.io/docs/array-type#efb1fe03459d

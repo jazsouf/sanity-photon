@@ -21,8 +21,7 @@ type BlockProps = {
 const Blocks: BlocksType = {
   editorialBlock: EditorialBlock,
   newletter: Newsletter,
-  // callToAction: Cta,
-  // other blocks types
+  // add other blocks types
 };
 
 /**
@@ -30,7 +29,7 @@ const Blocks: BlocksType = {
  */
 export function BlockRenderer({ block, index, pageId, pageType }: BlockProps) {
   // Block does exist
-
+  console.log({ block });
   if (typeof Blocks[block._type] !== "undefined") {
     return (
       <div
