@@ -20,6 +20,7 @@
   --main-padding: 4.5ch;
 
   --header-z-index: 10;
+  --title-z-index: 9;
 
   --font-sans-serif: ui-sans-serif, system-ui, sans-serif;
 }

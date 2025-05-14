@@ -5,6 +5,7 @@ import { useOptimistic } from "next-sanity/hooks";
 import Link from "next/link";
 
 import {
+  COLLECTION_QUERYResult,
   HOME_QUERYResult,
   PAGE_QUERYResult,
   PRODUCT_QUERYResult,
@@ -16,7 +17,8 @@ import { BlockRenderer } from "./block-renderer";
 type Page =
   | NonNullable<PAGE_QUERYResult>
   | NonNullable<HOME_QUERYResult>
-  | NonNullable<PRODUCT_QUERYResult>;
+  | NonNullable<PRODUCT_QUERYResult>
+  | NonNullable<COLLECTION_QUERYResult>["editorial"];
 
 type PageBuilderSection = {
   _key: string;

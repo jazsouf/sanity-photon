@@ -14,11 +14,12 @@ With the Sanity live API and the Shopify-Sanity sync, all data is cached and fin
 
 ## TODO
 
-- [ ] Product info section
-- [ ] Collection page w/ editorial section
 - [ ] Preview for sanity sections
 - [ ] Write tutorial
 - [ ] Shoot video tutorial
 - [ ] Add redirect/rewrites
-- [ ] Set up i18n maybe?
-- [ ] Add PLP filters maybe?
+
+### extra
+
+- [ ] Set up i18n
+- [ ] Add PLP filters

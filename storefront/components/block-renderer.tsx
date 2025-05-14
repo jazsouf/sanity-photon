@@ -29,7 +29,6 @@ const Blocks: BlocksType = {
  */
 export function BlockRenderer({ block, index, pageId, pageType }: BlockProps) {
   // Block does exist
-  console.log({ block });
   if (typeof Blocks[block._type] !== "undefined") {
     return (
       <div

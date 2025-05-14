@@ -1,0 +1,17 @@
+.list {
+  padding-block-start: var(--main-padding);
+}
+
+.collection {
+  position: relative;
+  width: 100%;
+  height: 80vh;
+
+  h2 {
+    position: absolute;
+    z-index: var(--title-z-index);
+    mix-blend-mode: difference;
+    color: #fff;
+    top: 50%;
+  }
+}

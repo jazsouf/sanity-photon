@@ -114,7 +114,7 @@ export const PAGE_QUERY = defineQuery(`
 `);
 
 export const COLLECTION_QUERY = defineQuery(`
-  *[_type == 'collection' && slug.current == $slug][0]{
+  *[_type == 'collection' && store.slug.current == $slug][0]{
     _type,
     _id,
     _updatedAt,
@@ -122,6 +122,7 @@ export const COLLECTION_QUERY = defineQuery(`
     "status": select(_id in path("drafts.**") => "draft", "published"),
     "name": coalesce(name, "Untitled Collection"),
     "slug": slug.current,
+    store,
     "editorial": {
       "_type":'page',
       _id,
@@ -186,6 +187,11 @@ export const PRODUCT_METADATA_QUERY = defineQuery(`
 
 export const ALL_PRODUCT_PAGES_SLUGS = defineQuery(`
   *[_type == "product" && defined(store.slug.current)]
+  {"slug": store.slug.current}
+`);
+
+export const ALL_COLLECTION_PAGES_SLUGS = defineQuery(`
+  *[_type == "collection" && defined(store.slug.current)]
   {"slug": store.slug.current}
 `);
 
