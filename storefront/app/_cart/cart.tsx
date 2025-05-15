@@ -10,6 +10,7 @@ import { CartItem } from "../../shopify/types";
 import { createUrl } from "../../shopify/utils";
 import { redirectToCheckout, saveCart } from "./cart-actions";
 import { useCart } from "./cart-context";
+import s from "./cart.module.css";
 
 type MerchandiseSearchParams = {
   [key: string]: string;
@@ -33,7 +34,7 @@ export function Cart() {
         <button
           aria-label="Open cart"
           onClick={openCart}
-          className="cart-button"
+          className={s.cartButton}
         >
           <OpenCart quantity={cart?.totalQuantity} />
         </button>
@@ -41,13 +42,13 @@ export function Cart() {
         <button
           aria-label="Close cart"
           onClick={closeCart}
-          className="cart-button"
+          className={s.cartButton}
         >
           <CloseCart />
         </button>
       )}
       {isOpen && (
-        <aside className="cart">
+        <aside className={s.cart}>
           {!cart || cart.lines.length === 0 ? (
             <div>
               <p>Your cart is empty.</p>

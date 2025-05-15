@@ -62,35 +62,3 @@
     width: 90%;
   }
 }
-
-.cart {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  text-align: left;
-  top: 0;
-  left: 0;
-  opacity: 0.99;
-  padding: var(--main-padding);
-  background-color: var(--color-bg);
-  color: black;
-
-  .main-grid {
-    padding-block: calc(var(--main-padding) * 2);
-  }
-
-  .total-checkout {
-    padding-block: calc(var(--main-padding) * 2);
-    text-align: right;
-  }
-
-  @media (max-width: 480px) {
-    padding: calc(var(--main-padding) / 2);
-    overflow-y: auto;
-  }
-}
-
-.cart-button {
-  position: relative;
-  z-index: var(--header-z-index);
-}
