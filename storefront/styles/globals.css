@@ -48,6 +48,7 @@
 .text-content {
   position: absolute;
   top: 50%;
+  padding: var(--main-padding);
 }
 
 .product-card {

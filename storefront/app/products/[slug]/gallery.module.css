@@ -3,11 +3,11 @@
   gap: var(--main-gap);
   grid-template-columns: 1fr;
   width: 100%;
+  padding: var(--main-padding);
 }
 
 .mainImage {
   width: 100%;
-  margin-bottom: 1rem;
   aspect-ratio: 1 / 1;
   position: relative;
 }

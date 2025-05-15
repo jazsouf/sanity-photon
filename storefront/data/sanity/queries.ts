@@ -140,7 +140,7 @@ export const COLLECTION_QUERY = defineQuery(`
 `);
 
 export const ALL_COLLECTIONS_QUERY = defineQuery(`
-  *[_type == "collection" && defined(store.slug.current)] | order(date desc, _updatedAt desc) {
+  *[_type == "collection" && defined(store.slug.current) && !store.isDeleted] | order(date desc, _updatedAt desc) {
     ...,
   }
 `);

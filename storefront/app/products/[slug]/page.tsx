@@ -210,8 +210,8 @@ async function RelatedProducts({ id, tags }: { id: string; tags: string[] }) {
   if (!relatedProducts.length) return null;
 
   return (
-    <div>
-      <h2>Related Products</h2>
+    <div className="inline-space">
+      <h2 className="inline-space">Related Products</h2>
       <ul className="main-grid">
         {relatedProducts.slice(0, 3).map((product) => (
           <li key={product.handle}>
@@ -219,7 +219,7 @@ async function RelatedProducts({ id, tags }: { id: string; tags: string[] }) {
               <div className="product-card">
                 <ProductImage
                   shopifyImage={product.featuredImage}
-                  objectFit="contain"
+                  objectFit="cover"
                   sizes="(min-width: 1024px) 20vw, (min-width: 768px) 25vw, (min-width: 640px) 33vw, (min-width: 475px) 50vw, 100vw"
                 />
               </div>

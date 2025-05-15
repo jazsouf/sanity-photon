@@ -6,6 +6,10 @@
   padding-block: var(--main-padding);
 }
 
+.inline-space {
+  padding-inline: var(--main-padding);
+}
+
 .absolute {
   position: absolute;
 }

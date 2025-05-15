@@ -1,24 +1,21 @@
 .header {
-  position: fixed;
   z-index: var(--header-z-index);
   width: 100%;
+  background: black;
+  color: white;
 }
 
 .annoucementBar {
-  background: black;
-  color: white;
   display: grid;
   place-items: center;
   text-align: center;
+  padding-inline: var(--main-padding);
 }
 
 .menu {
   display: flex;
   justify-content: space-between;
-
-  @media (max-width: 768px) {
-    padding: 0 var(--main-gap);
-  }
+  padding-inline: var(--main-padding);
 }
 
 .footer {
@@ -26,7 +23,7 @@
   color: white;
   display: flex;
   justify-content: space-between;
-
+  padding: var(--main-padding);
   @media (max-width: 768px) {
     flex-direction: column;
   }

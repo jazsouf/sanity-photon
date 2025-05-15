@@ -5,7 +5,7 @@
   place-content: center;
   place-items: center;
   padding: var(--main-padding);
-  padding-block-start: calc(var(--main-padding) * 6);
+  padding-block-start: calc(var(--main-padding) * 10);
   & > * {
     width: 100%;
   }
@@ -14,7 +14,6 @@
   }
 
   @media (max-width: 768px) {
-    grid-template-columns: 1fr 1fr;
     & > :first-child {
       aspect-ratio: 1.5;
     }
@@ -25,6 +24,7 @@
     & > :first-child {
       grid-column: 1;
       aspect-ratio: 1.2;
+      order: 2;
     }
   }
 }
@@ -32,11 +32,14 @@
 .productDetails {
   height: 100%;
   padding-block-start: calc(var(--main-padding) * 2);
+  padding-inline: var(--main-padding);
 }
 
 .line {
   display: flex;
-  justify-content: space-between;
+  justify-content: start;
+  gap: calc(var(--main-gap) * 4);
+
   dd {
     display: flex;
     gap: var(--main-gap);
