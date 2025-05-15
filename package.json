@@ -5,7 +5,8 @@
     "predev": "concurrently \"npm run predev --workspace=storefront\" \"npm run predev --workspace=studio\"",
     "dev": "concurrently \"npm run dev --workspace=storefront\" \"npm run dev --workspace=studio\"",
     "dev:storefront": "npm run dev --workspace=storefront",
-    "dev:studio": "npm run dev --workspace=studio"
+    "dev:studio": "npm run dev --workspace=studio",
+    "validate": "sanity-template-validate"
   },
   "keywords": [
     "Sanity",
@@ -18,14 +19,15 @@
     "Real-time"
   ],
   "bugs": {
-    "url": "https://github.com/sanity-io/sanity-template-nextjs-clean/issues"
+    "url": "https://github.com/jazsouf/sanity-photon/issues"
   },
-  "homepage": "https://github.com/sanity-io/sanity-template-nextjs-clean#readme",
+  "homepage": "https://github.com/jazsouf/sanity-photon#readme",
   "workspaces": [
     "studio",
     "storefront"
   ],
   "devDependencies": {
+    "@sanity/template-validator": "^2.4.3",
     "concurrently": "^9.1.2"
   }
 }
