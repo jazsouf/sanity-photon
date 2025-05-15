@@ -1000,6 +1000,11 @@ export type PRODUCT_METADATA_QUERYResult = {
 export type ALL_PRODUCT_PAGES_SLUGSResult = Array<{
   slug: string | null;
 }>;
+// Variable: ALL_COLLECTION_PAGES_SLUGS
+// Query: *[_type == "collection" && defined(store.slug.current)]  {"slug": store.slug.current}
+export type ALL_COLLECTION_PAGES_SLUGSResult = Array<{
+  slug: string | null;
+}>;
 // Variable: ALL_PAGES_SLUGS
 // Query: *[_type == "page" && defined(slug.current)]  {"slug": slug.current}
 export type ALL_PAGES_SLUGSResult = Array<{
@@ -1020,6 +1025,7 @@ declare module "@sanity/client" {
     "\n  *[_type == \"product\" && store.slug.current == $slug] [0] {\n    _type,\n    _id,\n    _updatedAt,\n    _createdAt,\n    overwriteDefaultInformationFields,\n    \"defaultProductInformation\": *[ _type == 'settings'][0].defaultProductInformation,\n    productInformation,\n    \"status\": select(_id in path(\"drafts.**\") => \"draft\", \"published\"),\n    \"name\": coalesce(name, \"Untitled Page\"),\n    \"slug\": store.slug.current,\n\n    pageBuilder[]{\n      \n  _key,\n  _type,\n  \"cover\": cover[] {\n    _type,\n    \"picture\": select(_type == \"picture\" => {\n      asset,\n      crop,\n      hotspot,\n      alt,\n    }),\n    \"color\": select(_type == \"color\" => hex)\n  },\n  content,\n  \"textColor\": coalesce(textColor.hex, 'black'),\n\n    },\n    pageSeo{\n  _type,\n  \"title\": coalesce(title, ^.name),\n  description,\n  ogImage\n}\n  }\n": PRODUCT_QUERYResult;
     "\n  *[_type == \"product\" && store.slug.current == $slug] [0] {\n    _type,\n    _id,\n    store\n  }\n": PRODUCT_METADATA_QUERYResult;
     "\n  *[_type == \"product\" && defined(store.slug.current)]\n  {\"slug\": store.slug.current}\n": ALL_PRODUCT_PAGES_SLUGSResult;
+    "\n  *[_type == \"collection\" && defined(store.slug.current)]\n  {\"slug\": store.slug.current}\n": ALL_COLLECTION_PAGES_SLUGSResult;
     "\n  *[_type == \"page\" && defined(slug.current)]\n  {\"slug\": slug.current}\n": ALL_PAGES_SLUGSResult;
   }
 }

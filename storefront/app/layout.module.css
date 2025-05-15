@@ -1,6 +1,6 @@
 .header {
   position: fixed;
-  z-index: 10;
+  z-index: var(--header-z-index);
   width: 100%;
 }
 
@@ -15,6 +15,10 @@
 .menu {
   display: flex;
   justify-content: space-between;
+
+  @media (max-width: 768px) {
+    padding: 0 var(--main-gap);
+  }
 }
 
 .footer {
@@ -22,9 +26,18 @@
   color: white;
   display: flex;
   justify-content: space-between;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 }
 
 .footer ul {
   display: flex;
   gap: var(--main-gap);
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    gap: calc(var(--main-gap) / 2);
+  }
 }

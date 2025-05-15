@@ -1,5 +1,9 @@
 .list {
   padding-block-start: var(--main-padding);
+
+  @media (max-width: 768px) {
+    padding-block-start: calc(var(--main-padding) * 1.5);
+  }
 }
 
 .collection {
@@ -13,5 +17,9 @@
     mix-blend-mode: difference;
     color: #fff;
     top: 50%;
+  }
+
+  @media (max-width: 768px) {
+    height: 70vh;
   }
 }

@@ -151,15 +151,6 @@ export async function Footer() {
         })}
       </ul>
       <Newsletter />
-      <div>
-        <a
-          href="https://github.com/jazsouf/sanity-photon"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          View on GitHub
-        </a>
-      </div>
     </footer>
   );
 }

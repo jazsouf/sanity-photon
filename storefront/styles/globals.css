@@ -2,22 +2,12 @@
 @import url("./tokens.css");
 
 :root {
-  /* flexoki theme */
   --color-text: #100f0f;
-  --color-text-faint: #575653;
   --color-text-muted: #878580;
-  --color-text-error: #d14d41;
-  --color-text-warning: #da702c;
-  --color-text-success: #879a39;
-  --color-text-link: #3aa99f;
   --color-bg: #fffcf0;
-  --color-bg-2: #f2f0e5;
-  --color-ui: #e6e4d9;
-  --color-ui-2: #dad8ce;
 
   --main-gap: 1ch;
-  --main-margin: 1ch;
-  --main-padding: 4.5ch;
+  --main-padding: 1ch;
 
   --header-z-index: 10;
   --title-z-index: 9;
@@ -30,12 +20,29 @@
   grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
   gap: var(--main-gap);
   padding-inline: var(--main-gap);
+  
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  }
+  
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    padding-inline: calc(var(--main-gap) / 2);
+  }
 }
 
 .editorial-block {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 16 / 9;
+  
+  @media (max-width: 768px) {
+    aspect-ratio: 4 / 3;
+  }
+  
+  @media (max-width: 480px) {
+    aspect-ratio: 1 / 1;
+  }
 }
 
 .text-content {
@@ -47,6 +54,11 @@
   position: relative;
   aspect-ratio: 0.7;
   margin: auto;
+  
+  @media (max-width: 480px) {
+    aspect-ratio: 0.8;
+    width: 90%;
+  }
 }
 
 .cart {
@@ -56,12 +68,16 @@
   top: 0;
   left: 0;
   opacity: 0.99;
-  padding-block: var(--main-padding);
-  padding-inline: calc(var(--main-padding) / 2);
+  padding: var(--main-padding);
   background-color: var(--color-bg);
+  
+  @media (max-width: 480px) {
+    padding: calc(var(--main-padding) / 2);
+    overflow-y: auto;
+  }
 }
 
 .cart-button {
   position: relative;
-  z-index: 10;
+  z-index: var(--header-z-index);
 }
