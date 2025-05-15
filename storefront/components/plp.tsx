@@ -29,7 +29,7 @@ export async function PLP(props: { collectionSlug?: string; tags: string[] }) {
             return (
               <article key={product.id}>
                 <NextLink href={`/products/${product.handle}`}>
-                  <div className="product-card">
+                  <figure className="product-card">
                     <NextImage
                       src={product.featuredImage.url || ""}
                       fill
@@ -37,16 +37,18 @@ export async function PLP(props: { collectionSlug?: string; tags: string[] }) {
                       objectFit="contain"
                       sizes={"33vw"}
                     />
-                  </div>
-                  <h2>{product.title}</h2>
-                  <p>
-                    <Price
-                      amount={product.priceRange.maxVariantPrice.amount}
-                      currencyCode={
-                        product.priceRange.maxVariantPrice.currencyCode
-                      }
-                    />
-                  </p>
+                    <figcaption>
+                      <span>{product.title}</span>
+                      <span>
+                        <Price
+                          amount={product.priceRange.maxVariantPrice.amount}
+                          currencyCode={
+                            product.priceRange.maxVariantPrice.currencyCode
+                          }
+                        />
+                      </span>
+                    </figcaption>
+                  </figure>
                 </NextLink>
               </article>
             );

@@ -18,6 +18,11 @@
   padding-inline: var(--main-padding);
 }
 
+.localCartButton {
+  min-width: 50px;
+  text-align: right;
+}
+
 .footer {
   background: black;
   color: white;

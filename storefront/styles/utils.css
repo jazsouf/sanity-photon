@@ -42,6 +42,17 @@
   align-items: center;
 }
 
+.font-normal {
+  font-weight: normal;
+}
+.color-black {
+  color: black;
+}
+
+.text-right {
+  text-align: right;
+}
+
 .sm-only {
   @media (min-width: 768px) {
     display: none !important;

@@ -32,8 +32,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-optical-sizing: auto;
+  font-size: var(--font-size);
+  font-weight: 600;
   font-family: var(--font-sans-serif);
-  font-weight: normal;
   display: flex;
   flex-direction: column;
   overscroll-behavior: none;
@@ -118,7 +119,11 @@ table {
 
 a {
   color: inherit;
-  text-decoration: underline;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+    text-underline-offset: -0.1px;
+  }
 }
 
 button {

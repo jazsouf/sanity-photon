@@ -7,17 +7,17 @@ export default function Newsletter() {
   const [state, dispatch, isPending] = useActionState(newsletterAction, "idle");
 
   return (
-    <section className="flex">
+    <section className="flex inline-space">
       {state !== "success" && (
         <div className="flex">
-          <h3>Subscribe</h3>
+          <p>Subscribe</p>
           <form className="flex" action={dispatch}>
             <input
               name="email"
-              placeholder="email"
+              placeholder="type your email here"
               required
               type="email"
-              size={18}
+              size={20}
             />
             <button type="submit">{isPending ? "Sending" : "Submit"}</button>
           </form>

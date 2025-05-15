@@ -45,20 +45,24 @@ function SubmitButton({
   selectedVariantId: string | undefined;
 }) {
   if (!availableForSale) {
-    return <button disabled>Out Of Stock</button>;
+    return (
+      <button disabled className="font-normal">
+        Out Of Stock
+      </button>
+    );
   }
 
   if (!selectedVariantId) {
     return (
-      <button aria-label="Please select an option" disabled>
+      <button
+        aria-label="Please select an option"
+        disabled
+        className="font-normal"
+      >
         Add To Cart
       </button>
     );
   }
 
-  return (
-    <button aria-label="Add to cart">
-      <b>Add To Cart</b>
-    </button>
-  );
+  return <button aria-label="Add to cart">Add To Cart</button>;
 }

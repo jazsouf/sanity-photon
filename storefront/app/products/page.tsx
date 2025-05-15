@@ -23,7 +23,7 @@ export default async function Page() {
           return (
             <article key={product.id}>
               <NextLink href={`/products/${product.handle}`}>
-                <div className="product-card">
+                <figure className="product-card">
                   <NextImage
                     src={product.featuredImage.url || ""}
                     fill
@@ -31,8 +31,8 @@ export default async function Page() {
                     objectFit="cover"
                     sizes={"33vw"}
                   />
-                </div>
-                <h2>{product.title}</h2>
+                </figure>
+                <figcaption>{product.title}</figcaption>
                 <p>
                   <Price
                     amount={product.priceRange.maxVariantPrice.amount}

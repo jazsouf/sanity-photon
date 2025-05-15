@@ -142,39 +142,41 @@ export function Cart() {
                     );
                   })}
               </ul>
-              <div className="block-space">
+              <div className="total-checkout">
                 <div>
-                  <p>Taxes</p>
-                  <p>
-                    <Price
-                      amount={cart.cost.totalTaxAmount.amount}
-                      currencyCode={cart.cost.totalTaxAmount.currencyCode}
-                    />
-                  </p>
+                  <div>
+                    <p>Taxes</p>
+                    <p>
+                      <Price
+                        amount={cart.cost.totalTaxAmount.amount}
+                        currencyCode={cart.cost.totalTaxAmount.currencyCode}
+                      />
+                    </p>
+                  </div>
+                  <div>
+                    <p>Shipping calculated at checkout</p>
+                  </div>
+                  <div>
+                    <p>Total</p>
+                    <p>
+                      <Price
+                        amount={cart.cost.totalAmount.amount}
+                        currencyCode={cart.cost.totalAmount.currencyCode}
+                      />
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <p>Shipping</p>
-                  <p>Calculated at checkout</p>
-                </div>
-                <div>
-                  <p>Total</p>
-                  <p>
-                    <Price
-                      amount={cart.cost.totalAmount.amount}
-                      currencyCode={cart.cost.totalAmount.currencyCode}
-                    />
-                  </p>
-                </div>
+                <form
+                  action={() => {
+                    redirectToCheckout(cart);
+                  }}
+                  className="block-space"
+                >
+                  <CheckoutButton />
+                </form>
               </div>
-              <form
-                action={() => {
-                  redirectToCheckout(cart);
-                }}
-              >
-                <CheckoutButton />
-              </form>
             </div>
-          )}{" "}
+          )}
         </aside>
       )}
     </>
@@ -201,7 +203,7 @@ function OpenCart({ quantity }: { quantity?: number }) {
 }
 
 function CloseCart() {
-  return <div>Close</div>;
+  return <div className="color-black">Close</div>;
 }
 
 function DeleteItemButton({

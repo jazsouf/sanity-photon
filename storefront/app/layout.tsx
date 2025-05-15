@@ -121,8 +121,7 @@ export async function Header() {
               </li>
             );
           })}
-
-          <li>
+          <li className={s.localCartButton}>
             <LocalCart />
           </li>
         </ul>
