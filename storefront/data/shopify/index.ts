@@ -63,7 +63,7 @@ export async function shopifyFetch<T>({
         ...(variables && { variables }),
       }),
       cache,
-      ...{ next: { tags, revalidate: 120 } },
+      ...{ next: { tags, revalidate: 60 * 60 * 24 } },
     });
 
     const body = await result.json();

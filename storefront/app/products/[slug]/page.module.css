@@ -5,7 +5,6 @@
   place-content: center;
   place-items: center;
   padding: var(--main-padding);
-  padding-block-start: calc(var(--main-padding) * 10);
   & > * {
     width: 100%;
   }

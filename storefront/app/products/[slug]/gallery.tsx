@@ -17,7 +17,7 @@ export function Gallery({
   const { state } = useProduct();
   const searchParams = useSearchParams();
   const [activeImage, setActiveImage] = useState<Image>(featuredImage);
-  
+
   // Update active image when search params change
   useEffect(() => {
     // If no search params are set, use the featured image
@@ -27,35 +27,40 @@ export function Gallery({
     }
 
     // Find a matching variant based on selected options
-    const activeOptions = Object.entries(state).filter(([key, value]) => 
-      key !== 'image' && value
+    const activeOptions = Object.entries(state).filter(
+      ([key, value]) => key !== "image" && value,
     );
-    
+
     if (activeOptions.length > 0) {
       // Find variants that match all or partial selected options
-      const matchingVariant = variants.find(variant => 
-        activeOptions.every(([name, value]) => 
-          variant.selectedOptions.some(option => 
-            option.name.toLowerCase() === name && option.value === value
-          )
-        )
+      const matchingVariant = variants.find((variant) =>
+        activeOptions.every(([name, value]) =>
+          variant.selectedOptions.some(
+            (option) =>
+              option.name.toLowerCase() === name && option.value === value,
+          ),
+        ),
       );
-      
+
       if (matchingVariant && matchingVariant.image) {
         setActiveImage(matchingVariant.image);
       }
     }
   }, [searchParams, state, variants, featuredImage]);
-  
+
   // Check if there's only one variant
   const hasSingleVariant = variants.length <= 1;
-  
+
   // If there's only one variant, just show the featured image
   if (hasSingleVariant) {
     return (
       <div className={s.gallery}>
         <div className={s.mainImage}>
-          <ProductImage shopifyImage={featuredImage} sizes="100vw" loading="eager" />
+          <ProductImage
+            shopifyImage={featuredImage}
+            sizes="100vw"
+            loading="eager"
+          />
         </div>
       </div>
     );
@@ -63,35 +68,49 @@ export function Gallery({
 
   return (
     <div className={s.gallery}>
-      {/* Main active image */}
       <div className={s.mainImage}>
-        <ProductImage shopifyImage={activeImage} sizes="100vw" loading="eager" />
+        <ProductImage
+          shopifyImage={activeImage}
+          sizes="100vw"
+          loading="eager"
+        />
       </div>
-      
-      {/* Thumbnails */}
       <div className={s.thumbnailContainer}>
-        <div 
-          className={activeImage.url === featuredImage.url ? s.activeThumbnail : s.thumbnail}
+        <div
+          className={
+            activeImage.url === featuredImage.url
+              ? s.activeThumbnail
+              : s.thumbnail
+          }
           onClick={() => setActiveImage(featuredImage)}
         >
-          <ProductImage shopifyImage={featuredImage} sizes="10vw" loading="eager" />
+          <ProductImage
+            shopifyImage={featuredImage}
+            sizes="10vw"
+            loading="eager"
+          />
         </div>
-        
-        {variants.map((variant) => (
-          variant.image && (
-            <div
-              key={variant.id}
-              className={activeImage.url === variant.image.url ? s.activeThumbnail : s.thumbnail}
-              onClick={() => setActiveImage(variant.image)}
-            >
-              <ProductImage 
-                shopifyImage={variant.image} 
-                sizes="10vw" 
-                loading="eager" 
-              />
-            </div>
-          )
-        ))}
+
+        {variants.map(
+          (variant) =>
+            variant.image && (
+              <div
+                key={variant.id}
+                className={
+                  activeImage.url === variant.image.url
+                    ? s.activeThumbnail
+                    : s.thumbnail
+                }
+                onClick={() => setActiveImage(variant.image)}
+              >
+                <ProductImage
+                  shopifyImage={variant.image}
+                  sizes="10vw"
+                  loading="eager"
+                />
+              </div>
+            ),
+        )}
       </div>
     </div>
   );
