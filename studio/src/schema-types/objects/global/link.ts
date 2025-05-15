@@ -49,6 +49,7 @@ export const link = defineType({
       name: "page",
       title: "Page",
       type: "reference",
+      weak: true,
       to: [{ type: "page" }],
       hidden: ({ parent }) => parent?.linkType !== "page",
       validation: (rule) =>
@@ -64,6 +65,7 @@ export const link = defineType({
       name: "product",
       title: "Product",
       type: "reference",
+      weak: true,
       to: [{ type: "product" }],
       hidden: ({ parent }) => parent?.linkType !== "product",
       validation: (rule) =>
@@ -79,6 +81,7 @@ export const link = defineType({
       name: "collection",
       title: "Collection",
       type: "reference",
+      weak: true,
       to: [{ type: "collection" }],
       hidden: ({ parent }) => parent?.linkType !== "collection",
       validation: (rule) =>
