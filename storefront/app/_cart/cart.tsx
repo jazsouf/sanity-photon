@@ -25,6 +25,8 @@ export function Cart() {
     if (cart) saveCart(cart);
   }, [cart]);
 
+  console.log(cart);
+
   return (
     <>
       {!isOpen ? (
@@ -76,6 +78,10 @@ export function Cart() {
                       new URLSearchParams(merchandiseSearchParams),
                     );
 
+                    const cartImage =
+                      item.merchandise.variantImage ??
+                      item.merchandise.product.featuredImage;
+
                     return (
                       <li key={i}>
                         <div>
@@ -91,10 +97,10 @@ export function Cart() {
                                 width={124}
                                 height={124}
                                 alt={
-                                  item.merchandise.product.featuredImage
-                                    .altText || item.merchandise.product.title
+                                  cartImage.altText ||
+                                  item.merchandise.product.title
                                 }
-                                src={item.merchandise.product.featuredImage.url}
+                                src={cartImage.url}
                               />
                             </div>
                             <Link href={merchandiseUrl} onClick={closeCart}>

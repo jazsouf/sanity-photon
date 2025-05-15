@@ -82,58 +82,67 @@ export function VariantSelector({
           </>
         )}
       </span>
-      {options.map((option) => (
-        <Form key={option.id} action="">
-          <dl className={s.line}>
-            <dt>{option.name}</dt>
-            <dd>
-              {option.values?.map((value) => {
-                const optionNameLowerCase = option.name?.toLowerCase();
+      {options
+        // remove the default variant from Shopify
+        .filter((option) => option.name !== "Title")
+        .map((option) => (
+          <Form key={option.id} action="">
+            <dl className={s.line}>
+              <dt>{option.name}</dt>
+              <dd>
+                {option.values?.map((value) => {
+                  const optionNameLowerCase = option.name?.toLowerCase();
 
-                const optionParams = { ...state, [optionNameLowerCase]: value };
+                  const optionParams = {
+                    ...state,
+                    [optionNameLowerCase]: value,
+                  };
 
-                const filtered = Object.entries(optionParams).filter(
-                  ([key, value]) =>
-                    options.find(
-                      (option) =>
-                        option.name.toLowerCase() === key &&
-                        option.values.includes(value),
-                    ),
-                );
-                const isAvailableForSale = combinations.find((combination) =>
-                  filtered.every(
+                  const filtered = Object.entries(optionParams).filter(
                     ([key, value]) =>
-                      combination[key] === value &&
-                      combination.availableForSale,
-                  ),
-                );
+                      options.find(
+                        (option) =>
+                          option.name.toLowerCase() === key &&
+                          option.values.includes(value),
+                      ),
+                  );
+                  const isAvailableForSale = combinations.find((combination) =>
+                    filtered.every(
+                      ([key, value]) =>
+                        combination[key] === value &&
+                        combination.availableForSale,
+                    ),
+                  );
 
-                const isActive = state[optionNameLowerCase] === value;
+                  const isActive = state[optionNameLowerCase] === value;
 
-                return (
-                  <button
-                    formAction={() => {
-                      const newState = updateOption(optionNameLowerCase, value);
-                      updateURL(newState);
-                    }}
-                    key={value}
-                    aria-disabled={!isAvailableForSale}
-                    disabled={!isAvailableForSale}
-                    title={`${option.name} ${value}${!isAvailableForSale ? " (Out of Stock)" : ""}`}
-                    className={cx(
-                      s.option,
-                      isActive && s.active,
-                      !isAvailableForSale && s.outOfStock,
-                    )}
-                  >
-                    {value}
-                  </button>
-                );
-              })}
-            </dd>
-          </dl>
-        </Form>
-      ))}
+                  return (
+                    <button
+                      formAction={() => {
+                        const newState = updateOption(
+                          optionNameLowerCase,
+                          value,
+                        );
+                        updateURL(newState);
+                      }}
+                      key={value}
+                      aria-disabled={!isAvailableForSale}
+                      disabled={!isAvailableForSale}
+                      title={`${option.name} ${value}${!isAvailableForSale ? " (Out of Stock)" : ""}`}
+                      className={cx(
+                        s.option,
+                        isActive && s.active,
+                        !isAvailableForSale && s.outOfStock,
+                      )}
+                    >
+                      {value}
+                    </button>
+                  );
+                })}
+              </dd>
+            </dl>
+          </Form>
+        ))}
     </>
   );
 }

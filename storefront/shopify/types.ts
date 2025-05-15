@@ -28,6 +28,7 @@ export type CartItem = {
   merchandise: {
     id: string;
     title: string;
+    variantImage: Image;
     selectedOptions: {
       name: string;
       value: string;
@@ -83,6 +84,7 @@ export type ProductVariant = {
   id: string;
   title: string;
   availableForSale: boolean;
+  image: Image;
   selectedOptions: {
     name: string;
     value: string;

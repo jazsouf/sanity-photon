@@ -28,7 +28,7 @@ export default async function Page() {
                 src={collection.store?.imageUrl || ""}
                 fill
                 alt={`Presentational image for collection: ${collection?.store?.title}`}
-                objectFit="contain"
+                objectFit="cover"
                 sizes={"100vw"}
               />
               <h2>{collection?.store?.title}</h2>

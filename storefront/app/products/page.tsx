@@ -28,8 +28,8 @@ export default async function Page() {
                     src={product.featuredImage.url || ""}
                     fill
                     alt={`Image for product: ${product.title}`}
-                    objectFit="contain"
-                    sizes={"50vw"}
+                    objectFit="cover"
+                    sizes={"33vw"}
                   />
                 </div>
                 <h2>{product.title}</h2>

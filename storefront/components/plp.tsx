@@ -35,7 +35,7 @@ export async function PLP(props: { collectionSlug?: string; tags: string[] }) {
                       fill
                       alt={`Image for product: ${product.title}`}
                       objectFit="contain"
-                      sizes={"50vw"}
+                      sizes={"33vw"}
                     />
                   </div>
                   <h2>{product.title}</h2>

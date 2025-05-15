@@ -1,5 +1,3 @@
-import NextImage from "next/image";
-
 import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -15,13 +13,15 @@ import {
 } from "../../../data/sanity/queries";
 import { getProduct, getProductRecommendations } from "../../../data/shopify";
 import { resolveOpenGraphImage } from "../../../sanity/utils";
-import { Image, Product } from "../../../shopify/types";
+import { Product } from "../../../shopify/types";
 import { AddToCart } from "../../_cart/add-to-cart";
 import s from "./page.module.css";
 import { ProductProvider } from "./product-context";
 import { VariantSelector } from "./variant-selector";
 import { CustomPortableText } from "../../../components/custom-portable-text";
 import { PortableTextBlock } from "next-sanity";
+import { Gallery } from "./gallery";
+import { ProductImage } from "./product-image";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -112,10 +112,9 @@ export default async function Page(props: Props) {
         <div>
           <div className={s.page}>
             <div>
-              <ProductImage
-                shopifyImage={product.featuredImage}
-                sizes="50vw"
-                loading="eager"
+              <Gallery
+                variants={product.variants}
+                featuredImage={product.featuredImage}
               />
             </div>
             <div className={s.productDetails}>
@@ -199,31 +198,6 @@ function ProductDescription({ product }: { product: Product }) {
       </div>
       <AddToCart product={product} />
     </>
-  );
-}
-
-function ProductImage({
-  shopifyImage,
-  sizes = "50vw",
-  objectFit = "contain",
-  loading = "lazy",
-}: {
-  shopifyImage: Image;
-  sizes?: string;
-  objectFit?: string;
-  loading?: "lazy" | "eager" | undefined;
-}) {
-  return (
-    <NextImage
-      loading={loading}
-      priority={loading === "lazy" ? undefined : true}
-      src={shopifyImage.url}
-      width={shopifyImage.width}
-      height={shopifyImage.height}
-      alt={shopifyImage.altText}
-      sizes={sizes}
-      className={objectFit}
-    />
   );
 }
 
