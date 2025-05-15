@@ -1,10 +1,10 @@
 @import url("./reset.css");
-@import url("./tokens.css");
+@import url("./utils.css");
 
 :root {
-  --color-text: #100f0f;
+  --color-text: #000000;
   --color-text-muted: #878580;
-  --color-bg: #fffcf0;
+  --color-bg: #ffffff;
 
   --main-gap: 1ch;
   --main-padding: 1ch;
@@ -20,11 +20,11 @@
   grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
   gap: var(--main-gap);
   padding-inline: var(--main-gap);
-  
+
   @media (max-width: 768px) {
     grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
   }
-  
+
   @media (max-width: 480px) {
     grid-template-columns: 1fr;
     padding-inline: calc(var(--main-gap) / 2);
@@ -35,11 +35,11 @@
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
-  
+
   @media (max-width: 768px) {
     aspect-ratio: 4 / 3;
   }
-  
+
   @media (max-width: 480px) {
     aspect-ratio: 1 / 1;
   }
@@ -54,7 +54,7 @@
   position: relative;
   aspect-ratio: 0.7;
   margin: auto;
-  
+
   @media (max-width: 480px) {
     aspect-ratio: 0.8;
     width: 90%;
@@ -70,7 +70,7 @@
   opacity: 0.99;
   padding: var(--main-padding);
   background-color: var(--color-bg);
-  
+
   @media (max-width: 480px) {
     padding: calc(var(--main-padding) / 2);
     overflow-y: auto;
