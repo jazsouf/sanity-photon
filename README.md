@@ -4,7 +4,7 @@
 
 Sanity Photon is a minimal starter kit for building custom e-commerce experiences with a headless architecture. It combines the power of Shopify for commerce operations, Sanity for content management, and Next.js for a fast, SEO-friendly storefront.
 
-![Sanity Photon](https://raw.githubusercontent.com/jazsouf/sanity-photon/main/sanity-photon-banner.png)
+![Sanity Photon](https://cdn.sanity.io/images/y2kzsdm0/production/b9b09d7ccd5036453ed4f28326e3a064995d78fa-2880x1800.png)
 
 ## Features ✨
 
