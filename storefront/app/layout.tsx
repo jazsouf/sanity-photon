@@ -140,7 +140,9 @@ export async function Footer() {
 
   return (
     <footer className={s.footer}>
-      <h3>Built with Sanity + Next.js.</h3>
+      <h3>
+        Built by <a href="https://soufianee.com">Soufiane</a>
+      </h3>
       <ul role="list">
         {footer?.links?.map((link) => {
           return (

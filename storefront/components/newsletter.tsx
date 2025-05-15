@@ -10,14 +10,14 @@ export default function Newsletter() {
     <section className="flex">
       {state !== "success" && (
         <div className="flex">
-          <p>Get in our newsletter</p>
+          <h3>Subscribe</h3>
           <form className="flex" action={dispatch}>
             <input
               name="email"
-              placeholder="Email"
+              placeholder="email"
               required
               type="email"
-              size={20}
+              size={18}
             />
             <button type="submit">{isPending ? "Sending" : "Submit"}</button>
           </form>

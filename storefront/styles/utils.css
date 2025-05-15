@@ -35,6 +35,7 @@
 .flex {
   display: flex;
   gap: var(--main-gap);
+  align-items: center;
 }
 
 .sm-only {
