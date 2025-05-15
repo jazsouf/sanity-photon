@@ -36,6 +36,8 @@
 }
 
 .line {
+  display: flex;
+  justify-content: space-between;
   dd {
     display: flex;
     gap: var(--main-gap);

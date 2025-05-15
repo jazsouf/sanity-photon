@@ -56,5 +56,9 @@ function SubmitButton({
     );
   }
 
-  return <button aria-label="Add to cart">Add To Cart</button>;
+  return (
+    <button aria-label="Add to cart">
+      <b>Add To Cart</b>
+    </button>
+  );
 }

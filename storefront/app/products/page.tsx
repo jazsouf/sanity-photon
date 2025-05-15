@@ -29,7 +29,7 @@ export default async function Page() {
                     fill
                     alt={`Image for product: ${product.title}`}
                     objectFit="contain"
-                    sizes={"33vw"}
+                    sizes={"50vw"}
                   />
                 </div>
                 <h2>{product.title}</h2>

@@ -204,7 +204,7 @@ function ProductDescription({ product }: { product: Product }) {
 
 function ProductImage({
   shopifyImage,
-  sizes = "33vw",
+  sizes = "50vw",
   objectFit = "contain",
   loading = "lazy",
 }: {
